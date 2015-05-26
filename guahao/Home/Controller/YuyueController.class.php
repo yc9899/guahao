@@ -1,0 +1,237 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class YuyueController extends CommonController {
+	//显示添加表格
+    public function add(){
+	$user=M('department');
+	$list=$user->select();
+    $this->assign('list',$list);
+    $this->display();   
+    }
+    //添加客户
+    public function ad(){
+		    $data['name']=I('post.xingming');
+		    $data['gender']=I('post.xingbie');
+		    $data['age']=I('post.nianling');
+		    $data['telephone']=I('post.phone');
+		    $data['yydate']=I('post.yysj');
+		    $data['department']=I('post.keshi');
+		    $data['data']=I('post.ziliao');
+		    $data['date']=date('Y-m-d H:i:s');
+		    $data['yuyue']='已预约';
+		  //  $data['enddate']=date('Y-m-d',strtotime('+1 year'));
+		    $sub=I('post.submit');
+		if(empty($sub)){
+			
+			$d=M('customer');
+			$a=$d->data($data)->add();
+			if($a){
+				$this->success('添加成功！！！');
+				
+				}
+			
+			
+			}else{
+				
+		$this->error('没有提交任何内容！！！！','/Home/Customer/add');		
+				
+				}
+		
+		
+		}
+		//客户列表
+    public function lists(){
+      $User = M('customer'); // 实例化User对象
+    $count = $User->count();// 查询满足要求的总记录数
+    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+    $Page->setConfig('prev', '上一页');
+    $Page->setConfig('next', '下一页');
+    $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
+    
+    $show = $Page->show();// 分页显示输出
+    // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+    $list = $User->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+    $this->assign('list',$list);// 赋值数据集
+    $this->assign('page',$show);// 赋值分页输出
+    
+    //显示昨日预约情况
+    $us=M('customer');
+    $data['date']=date('Y-m-d',strtotime('-1 day'));
+   $yy=$us->where($data)->count();
+    $this->assign('yy',$yy);
+    $map['todate']=date('Y-m-d',strtotime('-1 day'));
+    $list=$us->where($map)->count();
+    $this->assign('daoyuan',$list);
+    $this->display(); // 输出模板
+    
+    
+    }
+    //客户详细信息
+    public function more(){
+		$data['id']=I('get.id');
+		$user=M('customer');
+		$list=$user->where($data)->find();
+		$this->assign('list',$list);
+		$this->display();
+		
+		
+		}
+	//客户更新信息
+      public function uplist(){
+		$data['id']=I('get.id');
+		$user=M('customer');
+		$list=$user->where($data)->find();
+		$this->assign('list',$list);
+		$this->display();
+		
+		
+		} 
+ //客户信息更新
+ public function up(){
+	  $hidd=I('post.hidd');
+	  $sub=I('post.submit');
+	 if($hidd){
+		    $data['id']=I('post.hidd');
+		    $data['name']=I('post.xingming');
+		    $data['gender']=I('post.xingbie');
+		    $data['age']=I('post.nianling');
+		    $data['telephone']=I('post.phone');
+		    $data['yydate']=I('post.yysj');
+		    $data['department']=I('post.keshi');
+		    $data['data']=I('post.ziliao');   
+		 	$d=M('customer');
+			$a=$d->save($data);
+			
+			if($a){
+				$this->success('修改成功！！！','/Home/Yuyue/lists');
+				
+				}
+		 }else{
+			 
+			$this->error('不存在要更新的内容！！！');
+			 
+			 
+			 }
+ 
+	 
+	 
+	 }
+	 //删除客户资料
+	 public	function del(){
+		 if(isset($_SESSION['var'])){
+		 $user=M('customer');
+		 $data=I('get.id');
+		 $user->delete($data);
+		 
+		 $this->success('删除成功！！！','/Home/Yuyue/lists/');
+	 }else{
+		 
+		 $this->error('删除只有管理员才可以做到，需要请联系管理员！！！');
+		 
+		    }
+		 }
+	//确认到院！
+	public function yy(){
+		$user=M('customer');
+		$data['id']=I('get.id');
+		$data['yuyue']='已到院';
+		$data['todate']=date('Y-m-d');
+		$user->save($data);
+		$this->success('确认到院成功！');
+		
+		}
+		
+	//搜索
+	public function search(){
+		$id=I('get.id');
+		if($id==1){//当日
+	   $data['todate']=date('Y-m-d'); 
+	   $user=M('customer');
+	   $list=$user->where($data)->select();
+	   $this->assign('list',$list);
+	   $this->display('lists');
+	   
+			
+			}elseif($id==2){//昨日	
+	   $data['todate']=date('Y-m-d',strtotime('-1 day'));	
+	   $user=M('customer');
+	   $list=$user->where($data)->select();
+	   $this->assign('list',$list);
+	   $this->display('lists');		
+				}elseif($id==3){//本周	
+		$user=M('customer');	
+		$end=date('Y-m-d',strtotime('-7 day'));	
+		$map['todate']=array('EGT',$end);
+		$list=$user->where($map)->select();
+	    $this->assign('list',$list);
+	    $this->display('lists');	
+					
+					
+					}elseif($id==4){//本月
+						
+		$user=M('customer');	
+		$end=$data['todate']=date('Y-m-1');
+		$map['todate']=array('EGT',$end);
+		$list=$user->where($map)->select();
+	    $this->assign('list',$list);
+	    $this->display('lists');			
+						
+					
+						
+						}
+		
+		
+		
+		}
+//根据患者姓名搜索
+public function xmsearch(){
+	if(IS_POST){
+		$data['name']=I('xm');
+		$user=M('customer');
+		$list=$user->where($data)->select();
+		$this->assign('list',$list);
+		$this->display('lists');
+		
+		
+		}
+	}
+	
+//数据统计
+public function stat(){
+//根据状态显示数据
+    $status=I('status');
+    if($status==全部){
+
+}else{
+$map['yuyue']=$status;
+
+}
+	  
+	$stat=I('start');  
+	$end=I('end');
+	$map['date']=array(array('gt',$stat),array('lt',$end));  
+	$User = M('customer'); // 实例化User对象
+    $count = $User->where($map)->count();// 查询满足要求的总记录数
+    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+
+    $Page->setConfig('prev', '上一页');
+    $Page->setConfig('next', '下一页');
+    $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
+       //分页跳转的时候保证查询条件
+foreach($map as $key=>$val) {
+$Page->parameter[$key] = urlencode($val);
+}
+    $show = $Page->show();// 分页显示输出
+    // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+    $list = $User->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+    $this->assign('list',$list);// 赋值数据集
+    $this->assign('page',$show);// 赋值分页输出
+		 
+	$this->display();
+
+	
+	
+	}
+    
+}
