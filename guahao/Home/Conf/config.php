@@ -6,7 +6,7 @@ return array(
     'DB_HOST' => 'localhost', // 服务器地址
     'DB_NAME' => 'guahao', // 数据库名
     'DB_USER' => 'guahao', // 用户名
-    'DB_PWD' => 'waHr5F96U58xDtr6', // 密码
+    'DB_PWD' => 'U6QUzKjx6PXPnnzs', // 密码
     'DB_PORT' => 3306, // 端口
     'DB_PREFIX' => 'gh_', // 数据库表前缀
     'DB_CHARSET'=> 'utf8', // 字符集

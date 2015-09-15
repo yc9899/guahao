@@ -35,23 +35,24 @@
     <a href="/Home/Yuyue/search/id/3" class="btn">本周</a>
      <a href="/Home/Yuyue/search/id/4" class="btn">本月</a>
     </div>
-   <div style="padding:10px"></div> 
+   <div style="padding:10px"></div>
+
    
         <form class="form-search" action="/Home/Yuyue/xmsearch" method="post">
 <input type="text" class="input-medium search-query" name="xm">
     <button type="submit" class="btn">搜索</button>
     </form>
     
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
 <tr>
 <td>ID</td>
 <td>姓名:</td>
 <td>性别:</td>
-<td>年龄:</td>
+<td>科室:</td>
 <td>录入时间：</td>
 <td>预约时间：</td>
+<td>联系方式：</td>
 <td>是否到院</td>
-
 <td>操作</td>
 </tr>
 <volist name="list" id="vo">
@@ -59,9 +60,10 @@
 <td>{$vo.id}</td>
 <td>{$vo.name}</td>
 <td>{$vo.gender}</td>
-<td>{$vo.age}</td>
+<td><span class="badge badge-info">{$vo.department}</span></td>
 <td>{$vo.date}</td>
 <td>{$vo.yydate}</td>
+<td>{$vo.telephone}</td>
     <if condition="$vo.yuyue eq 已到院"><td><span class="label label-important">已到院</span></td>
     
     <else />

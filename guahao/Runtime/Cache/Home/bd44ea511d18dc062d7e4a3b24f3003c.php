@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><?php echo ($list["site"]); ?></title>
+    <title>欢迎访问烟台海洋医院挂号系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -47,15 +47,15 @@
   <body>
       <div class="navbar">
     <div class="navbar-inner">
-    <a class="brand" href="#"><?php echo ($list["site"]); ?></a>
+    <a class="brand" href="#">欢迎访问烟台海洋医院挂号系统</a>
     </div>
     </div>
     <div class="container">
 
       <form class="form-signin" action="/Home/Index/login" method="post">
         <h2 class="form-signin-heading">请登录系统</h2>
-       <input name="name" type="text" class="input-block-level" placeholder="帐号">
- <input name="password" type="password" class="input-block-level" placeholder="密码">
+        <input name="name" type="text" class="input-block-level" placeholder="帐号">
+        <input name="password" type="password" class="input-block-level" placeholder="密码">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> 记住我
         </label>

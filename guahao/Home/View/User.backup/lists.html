@@ -23,7 +23,11 @@
 <tr>
 
 <td>{$vo.name}</td>
-<td>{$vo.title}</td>
+<if  condition="$vo.power eq 1">
+<td>管理员</td>
+<elseif condition="$vo.power eq 2" />
+<td>普通用户</td>
+</if>
 <td><a href="/Home/User/up/id/{$vo.id}">修改</a>|<a href="/Home/User/del/id/{$vo.id}">删除</a></td>
 
 </tr>

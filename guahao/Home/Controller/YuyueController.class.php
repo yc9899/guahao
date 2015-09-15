@@ -14,7 +14,7 @@ class YuyueController extends CommonController {
 		    $data['name']=I('post.xingming');
 		    $data['gender']=I('post.xingbie');
 		    $data['age']=I('post.nianling');
-		    $data['telephone']=I('post.phone');
+		    $data['telephone']= implode('-', sscanf(I('post.phone'), '%3s%4s%4s'));//格式化手机号
 		    $data['yydate']=I('post.yysj');
 		    $data['department']=I('post.keshi');
 		    $data['data']=I('post.ziliao');
@@ -27,7 +27,7 @@ class YuyueController extends CommonController {
 			$d=M('customer');
 			$a=$d->data($data)->add();
 			if($a){
-				$this->success('添加成功！！！');
+				$this->success('添加成功！！！','/Home/Yuyue/lists');
 				
 				}
 			
@@ -106,10 +106,10 @@ class YuyueController extends CommonController {
 			if($a){
 				$this->success('修改成功！！！','/Home/Yuyue/lists');
 				
-				}
+				}else{ $this->error('没有修改任何内容！！！','/Home/Yuyue/lists');}
 		 }else{
 			 
-			$this->error('不存在要更新的内容！！！');
+			$this->error('不存在要更新的内容！！！','/Home/Yuyue/lists');
 			 
 			 
 			 }
@@ -202,15 +202,25 @@ public function stat(){
 //根据状态显示数据
     $status=I('status');
     if($status==全部){
-
-}else{
-$map['yuyue']=$status;
-
-}
-	  
 	$stat=I('start');  
 	$end=I('end');
 	$map['date']=array(array('gt',$stat),array('lt',$end));  
+}elseif($status==已预约){
+$map['yuyue']=$status;
+	$stat=I('start');  
+	$end=I('end');
+	$map['date']=array(array('gt',$stat),array('lt',$end));  
+
+}else{
+	//显示已到院人数
+$map['yuyue']=$status;
+	$stat=I('start');  
+	$end=I('end');
+	$map['todate']=array(array('gt',$stat),array('lt',$end));  	
+	
+	}
+	  
+
 	$User = M('customer'); // 实例化User对象
     $count = $User->where($map)->count();// 查询满足要求的总记录数
     $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)

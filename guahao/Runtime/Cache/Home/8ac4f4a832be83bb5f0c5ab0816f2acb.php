@@ -33,32 +33,34 @@
     <a href="/Home/Yuyue/search/id/3" class="btn">本周</a>
      <a href="/Home/Yuyue/search/id/4" class="btn">本月</a>
     </div>
-   <div style="padding:10px"></div> 
+   <div style="padding:10px"></div>
+
    
         <form class="form-search" action="/Home/Yuyue/xmsearch" method="post">
 <input type="text" class="input-medium search-query" name="xm">
     <button type="submit" class="btn">搜索</button>
     </form>
     
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
 <tr>
 <td>ID</td>
 <td>姓名:</td>
 <td>性别:</td>
-<td>年龄:</td>
+<td>科室:</td>
 <td>录入时间：</td>
 <td>预约时间：</td>
+<td>联系方式：</td>
 <td>是否到院</td>
-
 <td>操作</td>
 </tr>
 <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 <td><?php echo ($vo["id"]); ?></td>
 <td><?php echo ($vo["name"]); ?></td>
 <td><?php echo ($vo["gender"]); ?></td>
-<td><?php echo ($vo["age"]); ?></td>
+<td><span class="badge badge-info"><?php echo ($vo["department"]); ?></span></td>
 <td><?php echo ($vo["date"]); ?></td>
 <td><?php echo ($vo["yydate"]); ?></td>
+<td><?php echo ($vo["telephone"]); ?></td>
     <?php if($vo["yuyue"] == 已到院): ?><td><span class="label label-important">已到院</span></td>
     
     <?php else: ?>

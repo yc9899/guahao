@@ -83,11 +83,11 @@ class UserController extends CommonController {
     public function seting(){
          if(IS_POST){
         $map['site'] = I('sitename'); 
-        $user = M('seting');
+        $user = M('setting');
         $user->where('sid=1')->save($map);
         $this->success('修改成功！！！');
          }else{
-    $user = M('seting');
+    $user = M('setting');
   $list= $user->find();
   $this->assign('list',$list);
           $this->display();

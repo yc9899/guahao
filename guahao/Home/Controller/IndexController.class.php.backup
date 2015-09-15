@@ -7,12 +7,6 @@ if(session('?var')){
      $this->success('已经登录了，正在跳转...','/home/main/main');
 
          }else{
-  //显示名称
-      $user=M('seting');
-      $list=$user->find();
-      $this->assign('list',$list);
-  //end
-
    $this->display();}
     }
     public function login(){
@@ -27,7 +21,6 @@ if(session('?var')){
 
 		$_SESSION['var']=$data['name'].$data['pwd'];
 		$_SESSION['uid']=$data['uid'];
-        $_SESSION['nick']=$data['name'];
 		
 		
 		}else{

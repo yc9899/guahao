@@ -6,7 +6,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>LINUX主机管理系统</title>
+<title>在线预约系统</title>
 
 </head>
 
@@ -24,7 +24,7 @@
 
 -->
 
-<frameset rows="48,*" cols="*" frameborder="yes" border="1" bordercolor="#00FF00" framespacing="0">
+<frameset rows="48,*" cols="*" frameborder="yes" border="1" bordercolor="#000000" framespacing="0">
 
   <frame src="top/" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
 
@@ -34,7 +34,7 @@
 
 
 
-  <frameset rows="*" cols="220,*" framespacing="0" frameborder="yes" border="1" bordercolor="#00FF00">
+  <frameset rows="*" cols="220,*" framespacing="0" frameborder="yes" border="1" bordercolor="#000000">
 
   <frame src="left/" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
 

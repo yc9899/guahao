@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,42 +18,42 @@
 <tr>
 <td>姓名:</td>
 <td>
-<input name="xingming" type="text" value="{$list.name}">
+<input name="xingming" type="text" value="<?php echo ($list["name"]); ?>">
 </td>
 </tr>
 <tr>
 <td>性别:</td>
 <td>
-<input type="text" name="xingbie" value="{$list.gender}">
+<input type="text" name="xingbie" value="<?php echo ($list["gender"]); ?>">
 </td>
 </tr>
 <tr>
 <td>年龄:</td>
-<td><input type="text" name="nianling" value="{$list.age}"></td>
+<td><input type="text" name="nianling" value="<?php echo ($list["age"]); ?>"></td>
 </tr>
 <tr>
 <td>手机号:</td>
-<td><input type="text" name="phone" value="{$list.telephone}"></td>
+<td><input type="text" name="phone" value="<?php echo ($list["telephone"]); ?>"></td>
 </tr>
 <tr>
 <td>预约时间:</td>
-<td><input type="text" name="yysj" class="Wdate" onClick="WdatePicker()" value="{$list.yydate}"></td>
+<td><input type="text" name="yysj" class="Wdate" onClick="WdatePicker()" value="<?php echo ($list["yydate"]); ?>"></td>
 </tr>
 <tr>
 <td>科室:</td>
-<td><input type="text" name="keshi" value="{$list.department}"></td>
+<td><input type="text" name="keshi" value="<?php echo ($list["department"]); ?>"></td>
 </tr>
 
 
 <tr>
 <td>备注:</td>
 <td>
-<textarea rows="5" name="ziliao">{$list.data}</textarea>
+<textarea rows="5" name="ziliao"><?php echo ($list["data"]); ?></textarea>
 </td>
 </tr>
 
 <tr>
-<td><input type="hidden" name="hidd" value="{$list.id}"></td>
+<td><input type="hidden" name="hidd" value="<?php echo ($list["id"]); ?>"></td>
 <td><button type="submit" class ="btn">修改</button></td>
 </tr>
 </table>

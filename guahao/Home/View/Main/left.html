@@ -19,11 +19,21 @@
 
 <body>
            <ul class="list-group">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+
+    <a href="#" class="list-group-item disabled" ><span class="glyphicon glyphicon-th" aria-hidden="true"></span>预约管理</a>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/add/" target="mainFrame">预约登记</a></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/lists/" target="mainFrame">预约列表</a></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/stat" target="mainFrame">数据统计</a></li>
+    <a href="#" class="list-group-item disabled" ><span class="glyphicon glyphicon-th" aria-hidden="true"></span>科室管理</a>
+ <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/keshi/add/" target="mainFrame">添加科室</a></li>
+ <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/keshi/lists/" target="mainFrame">科室管理</a></li>
+     <a href="#" class="list-group-item disabled" ><span class="glyphicon glyphicon-th" aria-hidden="true"></span>用户管理</a>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/User/add" target="mainFrame">增加用户</a></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/User/lists" target="mainFrame">用户列表</a></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/User/group" target="mainFrame">用户组管理</a></li>
+ <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/User/seting" target="mainFrame">系统设置</a></li>
+ <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Main/index" target="mainFrame">关于软件</a></li>
+
 </ul>
 <!--
       <div class="row">
