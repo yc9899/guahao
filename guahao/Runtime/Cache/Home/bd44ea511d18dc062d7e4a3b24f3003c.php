@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>欢迎访问烟台海洋医院挂号系统</title>
+    <title><?php echo ($list["site"]); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -47,7 +47,7 @@
   <body>
       <div class="navbar">
     <div class="navbar-inner">
-    <a class="brand" href="#">欢迎访问烟台海洋医院挂号系统</a>
+    <a class="brand" href="#"><?php echo ($list["site"]); ?></a>
     </div>
     </div>
     <div class="container">

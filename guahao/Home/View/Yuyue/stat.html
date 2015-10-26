@@ -3,8 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/Public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-     <link href="/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <title>管理面板</title>
     <script src="http://code.jquery.com/jquery.js"></script>
@@ -13,44 +17,50 @@
 </head>
 <body style="padding:30px">
 <table class="table table-bordered">
-<div class="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
+<div class="alert alert-warning" role="alert">
 通知：如患者已经到院，点击 <b>已预约</b>可以确认到院！！！！查询系统，可以根据姓来查询，如不知道准确姓名，请根据患者姓来查询
     </div>
 	</table>
-   <div style="padding:10px"></div> 
-<form class="form-search" action="/Home/Yuyue/stat" method="get">
- 开始时间：<input type="text" name="start" class="Wdate" onClick="WdatePicker()">
-结束时间：  <input type="text" name="end" class="Wdate" onClick="WdatePicker()">
-分类：<select name="status" ><option value="全部">全部</option>
+<form class="form-inline" action="/Home/Yuyue/stat" method="get">
+ 开始时间：<input type="text" class="form-control" name="start" class="Wdate" onClick="WdatePicker()">
+结束时间：  <input type="text" class="form-control" name="end" class="Wdate" onClick="WdatePicker()">
+分类：<select name="status" class="form-control" ><option value="全部">全部</option>
               <option value="已预约">已预约</option>
               <option value="已到院">已到院</option>
 
 </select>
-    <button type="submit" class="btn">搜索</button>
+    <button type="submit" class="btn btn-default">搜索</button>
+<a href="/Home/Yuyue/statout/" class="btn btn-primary">导出报表</a>
     </form>
+<div style="padding:10px">
 
-<table class="table table-bordered">
-<th>暂无数据</th>
+
+
+
+
+<table class="table  table-bordered table-hover">
 <tr>
 <td>ID</td>
+<td>部门：</td>
 <td>姓名:</td>
 <td>性别:</td>
-<td>年龄:</td>
+<td>科室:</td>
 <td>录入时间：</td>
 <td>预约时间：</td>
+<td>联系方式：</td>
 <td>是否到院</td>
-
 <td>操作</td>
 </tr>
 <volist name="list" id="vo">
 <tr>
 <td>{$vo.id}</td>
+<td>{$vo.source}</td>
 <td>{$vo.name}</td>
 <td>{$vo.gender}</td>
-<td>{$vo.age}</td>
+<td>{$vo.department}</td>
 <td>{$vo.date}</td>
 <td>{$vo.yydate}</td>
+<td>{$vo.telephone}</td>
     <if condition="$vo.yuyue eq 已到院"><td><span class="label label-important">已到院</span></td>
     
     <else />

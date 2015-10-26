@@ -8,7 +8,7 @@ if(session('?var')){
 
          }else{
   //显示名称
-      $user=M('seting');
+      $user=M('setting');
       $list=$user->find();
       $this->assign('list',$list);
   //end
@@ -24,12 +24,20 @@ if(session('?var')){
 	if($data){
 		$this->success("登录成功！！！",'/Home/Main/main');
 		     
-
+            //查询登录ID的权限
+           $m['uid'] = $data['uid'];
+            //$map = M('auth_group_access');
+          // $acc = $map->where($m)->find();
+         $list = $user
+->join('gh_auth_group_access on gh_user.uid = gh_auth_group_access.uid')
+->join('gh_auth_group on gh_auth_group_access.group_id = gh_auth_group.id')
+->find();
 		$_SESSION['var']=$data['name'].$data['pwd'];
 		$_SESSION['uid']=$data['uid'];
-        $_SESSION['nick']=$data['name'];
-		
-		
+                $_SESSION['nick']=$data['name']; //session写入用户名
+                $_SESSION['source']=$list['title'];                
+	        $_SESSION['group']= $list['group_id'];	
+		$_SESSION['m'] = $list['ment'];
 		}else{
 	$this->error("输入的帐号或者是密码错误！");
 			
@@ -41,7 +49,6 @@ if(session('?var')){
 		
 		}
 	public function about(){
-		
 		$this->display();
 		
 		}

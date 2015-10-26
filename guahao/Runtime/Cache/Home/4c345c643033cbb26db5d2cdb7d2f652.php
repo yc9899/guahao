@@ -23,7 +23,7 @@
 
 <td><?php echo ($vo["name"]); ?></td>
 <td><?php echo ($vo["title"]); ?></td>
-<td><a href="/Home/User/up/id/<?php echo ($vo["id"]); ?>">修改</a>|<a href="/Home/User/del/id/<?php echo ($vo["id"]); ?>">删除</a></td>
+<td><a href="/Home/User/del/id/<?php echo ($vo["uid"]); ?>">删除</a></td>
 
 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
