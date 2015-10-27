@@ -6,7 +6,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>在线预约系统</title>
+<title>烟台爱尔眼科医院在线报备系统</title>
 
 </head>
 

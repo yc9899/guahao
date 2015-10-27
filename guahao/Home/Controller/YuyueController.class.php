@@ -17,11 +17,7 @@ class YuyueController extends CommonController {
                     $data['uid']=session('uid');
                     $data['sid']=session('group');
                     $data['uname'] = session('nick');
-                  //查询权限
-                   $g['id'] = session('group');
-                   $group = M('auth_group');
-                    $map= $group->where($g)->find(); 
-                    $data['source'] = $map['title'];
+                    $data['source'] = session('source');
 		  //  $data['enddate']=date('Y-m-d',strtotime('+1 year'));
              $User = M("customer"); // 实例化User对象
              $a = $User->data($data)->add();

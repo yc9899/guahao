@@ -26,9 +26,9 @@
 </div>	
   <ul class="nav navbar-nav " >
 	  <li class="active"><a href="#"  target="mainFrame">首页</a></li>
-	  	  	  <li><a href="/Home/Yuyue/add" target="mainFrame">预约登记</a></li>
+	  	  	  <li><a href="/Home/Yuyue/add" target="mainFrame">报备登记</a></li>
 	  	  <li><a href="/Home/keshi/lists" target="mainFrame">科室管理</a></li>
-	  	  	  	  <li><a href="/Home/Yuyue/lists" target="mainFrame">预约查询</a></li>
+	  	  	  	  <li><a href="/Home/Yuyue/lists" target="mainFrame">报备查询</a></li>
 	  	  	  	  	  	  <li><a href="/Home/Main/index" target="mainFrame">系统主页</a></li>
 	  </ul>
   <ul class="nav navbar-nav navbar-rightt" style="float:right">

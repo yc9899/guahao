@@ -7,10 +7,11 @@ class UserController extends CommonController {
    if(IS_POST){		
          	$n['name'] = $data['name']=I('yonghu');
 	       	$data['pwd']=md5(I('mima'));
+                $data['date']=date('Y-m-d');
 		$map['group_id']=I('quanxian');
 //是否设为部门管理        
-       $m = I('m');
-           if($m=3){
+      echo $m = I('m');
+           if($m==3){
 
          $map['ment']='YES';
         }
@@ -62,17 +63,8 @@ class UserController extends CommonController {
    
     if(IS_POST){
 
-$pw['name'] = session('nick');
-$pw['pwd'] =md5(I('pass'));
-$map['pwd']=md5(I('xin'));
-
     $User = M('user');
-    $ra = $User->where($pw)->find();
-       
-     if($ra){
-   //验证通过可以修改密码
-
-$sa = $User->where($pw)->save($map);
+    $sa = $User->where($pw)->save($map);
                   //验证是否修改成功
                   if($sa){
        //登录成功！退出登录，清除session，重新登录
@@ -81,18 +73,9 @@ $sa = $User->where($pw)->save($map);
                     $this->error('未知错误，请联系管理员');
                              }
 
-            
-         }else{
-
-$this->error('原始密码错误，如忘记可以联系管理员修改！！');
-
-     }
-
-
-
-   }	
+                                }	
 	
-$this->display();		
+	$this->display();	
 		}
 //删除用户		
     public function del(){

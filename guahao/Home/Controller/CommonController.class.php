@@ -18,7 +18,7 @@ class CommonController extends Controller {
 
          $auth = new \Think\Auth();
         //类库位置应该位于ThinkPHP\Library\Think\
-        $uid=$_SESSION['uid'];
+        $uid=$_SESSION['group'];
         if($uid==1){
 			
 			

@@ -20,9 +20,9 @@
 <body>
            <ul class="list-group">
 
-    <a href="#" class="list-group-item disabled" ><span class="glyphicon glyphicon-th" aria-hidden="true"></span>预约管理</a>
-  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/add/" target="mainFrame">预约登记</a></li>
-  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/lists/" target="mainFrame">预约列表</a></li>
+    <a href="#" class="list-group-item disabled" ><span class="glyphicon glyphicon-th" aria-hidden="true"></span>报备管理</a>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/add/" target="mainFrame">报备登记</a></li>
+  <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/lists/" target="mainFrame">报备列表</a></li>
   <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/stat/" target="mainFrame">数据统计</a></li>
   <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/into/" target="mainFrame">批量导入</a></li>
   <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><a href="/Home/Yuyue/import/" target="mainFrame">全部导出</a></li>
@@ -43,9 +43,9 @@
         <div class="span3" style="width:200px">
           <div class="well"> 
             <ul class="nav nav-list">
-              <li class="nav-header"><i class="icon-plus-sign"></i>预约管理</li>
-              <li><a href="/Home/Yuyue/add/" target="I1"><i class="icon-ok-sign"></i>预约登记</a></li>
-              <li><a href="/Home/Yuyue/lists/" target="I1"><i class="icon-ok-sign"></i>预约列表</a></li>
+              <li class="nav-header"><i class="icon-plus-sign"></i>报备管理</li>
+              <li><a href="/Home/Yuyue/add/" target="I1"><i class="icon-ok-sign"></i>报备登记</a></li>
+              <li><a href="/Home/Yuyue/lists/" target="I1"><i class="icon-ok-sign"></i>报备列表</a></li>
               <li><a href="/Home/Yuyue/stat/" target="I1"><i class="icon-ok-sign"></i>数据统计</a></li>
               
               <li class="nav-header"><i class="icon-eye-open"></i>科室管理</li>

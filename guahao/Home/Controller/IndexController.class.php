@@ -22,22 +22,31 @@ if(session('?var')){
 	$user= M('user');
 	$data=$user->where($wh)->find();
 	if($data){
-		$this->success("登录成功！！！",'/Home/Main/main');
+
 		     
             //查询登录ID的权限
            $m['uid'] = $data['uid'];
-            //$map = M('auth_group_access');
-          // $acc = $map->where($m)->find();
-         $list = $user
-->join('gh_auth_group_access on gh_user.uid = gh_auth_group_access.uid')
-->join('gh_auth_group on gh_auth_group_access.group_id = gh_auth_group.id')
-->find();
+            //查询auth_group_access
+          $row = M('auth_group_access');
+          $ac =$row->where($m)->find();
+          $g['id'] = $ac['group_id'];
+      //查询auth_group
+      if($row){
+           $group = M('auth_group');
+            $list = $group->where($g)->find();
+      //select title
+
+           }
+        
 		$_SESSION['var']=$data['name'].$data['pwd'];
 		$_SESSION['uid']=$data['uid'];
                 $_SESSION['nick']=$data['name']; //session写入用户名
-                $_SESSION['source']=$list['title'];                
-	        $_SESSION['group']= $list['group_id'];	
-		$_SESSION['m'] = $list['ment'];
+                $_SESSION['source']=$list['title'];    //权限名称            
+	        $_SESSION['group']= $ac['group_id'];	//group_id权限ID
+	 	$_SESSION['m'] = $ac['ment'];//判断是否为主管
+
+		$this->success("登录成功！！！",'/Home/Main/main');
+
 		}else{
 	$this->error("输入的帐号或者是密码错误！");
 			
