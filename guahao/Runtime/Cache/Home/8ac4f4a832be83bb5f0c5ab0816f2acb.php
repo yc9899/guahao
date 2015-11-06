@@ -62,8 +62,9 @@
 <td>录入时间：</td>
 <td>预约时间：</td>
 <td>联系方式：</td>
-<td>是否到院</td>
-<td>操作</td>
+<td>是否到院:</td>
+<td>是否手术:</td>
+<td>操作:</td>
 </tr>
 <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 <td><?php echo ($vo["id"]); ?></td>
@@ -78,8 +79,10 @@
     
     <?php else: ?>
  	<td><a  href="/Home/Yuyue/yy/id/<?php echo ($vo["id"]); ?>"><span class="label label-success"><?php echo ($vo["yuyue"]); ?></span></a></button></td><?php endif; ?>
-
-
+  <?php if($vo["surgery"] == 否): ?><td><a href="/Home/Yuyue/sur/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-xs" role="button"><?php echo ($vo["surgery"]); ?></a></td>
+  <?php else: ?>
+    <td><a href="javascript:void()" class="btn btn-danger btn-xs" role="button"><?php echo ($vo["surgery"]); ?></a></td><?php endif; ?>
+   
 <td><a href="/Home/Yuyue/more/id/<?php echo ($vo["id"]); ?>">查看</a>|
 <a href="/Home/Yuyue/uplist/id/<?php echo ($vo["id"]); ?>">修改</a>|
 <a href="/Home/Yuyue/del/id/<?php echo ($vo["id"]); ?>">删除</a>

@@ -29,6 +29,7 @@ if(session('?var')){
             //查询auth_group_access
           $row = M('auth_group_access');
           $ac =$row->where($m)->find();
+       // dump($ac);
           $g['id'] = $ac['group_id'];
       //查询auth_group
       if($row){

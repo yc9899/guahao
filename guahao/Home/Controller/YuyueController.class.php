@@ -8,7 +8,7 @@ class YuyueController extends CommonController {
 		    $data['name']=I('post.xingming');
 		    $data['gender']=I('post.xingbie');
 		    $data['age']=I('post.nianling');
-		    $data['telephone']= implode('-', sscanf(I('post.phone'), '%3s%4s%4s'));//格式化手机号
+		    $data['telephone']= I('post.phone');
 		    $data['yydate']=I('post.yysj');
 		    $data['department']=I('post.keshi');
 		    $data['data']=I('post.ziliao');
@@ -123,6 +123,7 @@ class YuyueController extends CommonController {
     }
     //客户详细信息
     public function more(){
+              
 		$data['id']=I('get.id');
 		$user=M('customer');
 		$list=$user->where($data)->find();
@@ -193,8 +194,19 @@ class YuyueController extends CommonController {
 		$user->save($data);
 		$this->success('确认到院成功！');
 		
-		}
-		
+  		}
+         //确认手术
+        public function sur(){
+              $user=M('customer');
+                $data['id']=I('get.id');
+                $data['surgery']='是';
+                $data['todate']=date('Y-m-d');
+                $user->save($data);
+                $this->success('确认手术成功！');
+           
+
+
+            } 		
 	//搜索
 	public function search(){
 		$id=I('get.id');
