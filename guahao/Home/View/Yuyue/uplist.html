@@ -1,62 +1,145 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/Public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-     <link href="/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<extend name="Main:base" />
+<block name="menu">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
 
-<title>管理面板</title>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="/Public/bootstrap/js/bootstrap.min.js"></script>
-          <script src="/Public/My97DatePicker/WdatePicker.js"></script>
-</head>
-<body style="padding:30px">
-	<form  action="/Home/Yuyue/up" method="post">
-<table class="table table-bordered">
-<th>修改患者信息</th>
-<tr>
-<td>姓名:</td>
-<td>
-<input name="xingming" type="text" value="{$list.name}">
-</td>
-</tr>
-<tr>
-<td>性别:</td>
-<td>
-<input type="text" name="xingbie" value="{$list.gender}">
-</td>
-</tr>
-<tr>
-<td>年龄:</td>
-<td><input type="text" name="nianling" value="{$list.age}"></td>
-</tr>
-<tr>
-<td>手机号:</td>
-<td><input type="text" name="phone" value="{$list.telephone}"></td>
-</tr>
-<tr>
-<td>预约时间:</td>
-<td><input type="text" name="yysj" class="Wdate" onClick="WdatePicker()" value="{$list.yydate}"></td>
-</tr>
-<tr>
-<td>科室:</td>
-<td><input type="text" name="keshi" value="{$list.department}"></td>
-</tr>
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			修改报备
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">报备管理</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">修改</a>
+					</li>
+				</ul>
+				
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN VALIDATION STATES-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i>修改数据
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form  method="post" class="form-horizontal">
+                                            
+								<div class="form-body">
+	      								<div class="form-group has-warning">
+										<label class="control-label col-md-3" for="inputWarning">姓名</label>
+										<div class="col-md-4">
+                                                                                     <input type="text" name="xingming" class="form-control" id="inputError" value="{$list.name}"/>
 
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputError">性别</label>
+										<div class="col-md-4">
+											<input type="radio" name="xingbie" id="optionsRadios2" value="男" <if condition="$list.gender eq 男">checked</if> >男
+                                                                                        <input type="radio" name="xingbie" id="optionsRadios2" value="女"  <if condition="$list.gender eq 女">checked</if> >女
+											
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputError">年龄</label>
+										<div class="col-md-4">
+											<input type="text" name="nianling" class="form-control" id="inputError" value="{$list.age}"/>
+											
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputSuccess">联系方式</label>
+										<div class="col-md-4">
+											<input type="text" name="phone" class="form-control" id="inputSuccess" value="{$list.telephone}"/>
 
-<tr>
-<td>备注:</td>
-<td>
-<textarea rows="5" name="ziliao">{$list.data}</textarea>
-</td>
-</tr>
+                                                                                                   
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputError">预约时间</label>
+										<div class="col-md-4">
+											<input type="text" name="yysj" class="form-control" id="inputError" onClick="WdatePicker()" value="{$list.yydate}"/>
+											
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputError">科室</label>
+										<div class="col-md-4">
+											<select name="keshi" class="form-control">
+                                                                                             <option>{$list.department}</option>
+                                                                                             <volist name="dep " id="vo">
+                                                                                             <option>{$vo.dname}</option>
+                                                                                             </volist>
+                                                                                             </select>
+											
+										</div>
+									</div>
+									<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputError">地区</label>
+										<div class="col-md-4">
+											<input type="text" name="dz" class="form-control" id="inputError"  value="{$list.address}"/>
+											
+										</div>
+									</div>
 
-<tr>
-<td><input type="hidden" name="hidd" value="{$list.id}"></td>
-<td><button type="submit" class ="btn">修改</button></td>
-</tr>
-</table>
-</form>
-</body>
-</html>
+									  	<div class="form-group has-success">
+										<label class="control-label col-md-3" for="inputSuccess">备注</label>
+                                                                                     <div class="col-md-8">
+                	<textarea class="ckeditor form-control" name="ziliao" rows="6" data-error-container="#editor2_error">{$list.data}</textarea>
+                                                 
+
+										</div>
+									</div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+                                                                                        <input type="hidden" name="hidd" value="{$list.id}">
+											<button type="submit" class="btn green">保存</button>
+											<button type="button" class="btn default">重置</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+					<!-- END VALIDATION STATES-->
+				</div>
+			</div>
+			
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+	
+</div>
+<!-- END CONTAINER -->
+</block>

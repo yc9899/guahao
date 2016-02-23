@@ -1,60 +1,150 @@
-<!CTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<extend name="base" />
+<block name="menu">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			软件信息 <small>Software</small>
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">软件信息</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+				</ul>
+				
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+                                                              <div class="portlet box blue">
 
-<head>
+						<div class="portlet-title">
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+							<div class="caption">
 
-<title>烟台爱尔眼科医院在线报备系统</title>
+								<i class="fa fa-cogs"></i>关于软件
+                                                        
+							</div>
 
-</head>
+							<div class="tools">
 
-<!--
+								<a href="javascript:;" class="collapse">
 
-<frameset rows="48,*" cols="*" framespacing="0" frameborder="no" border="0">
+								</a>
 
-  <frame src="top/" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" />
+								<a href="#portlet-config" data-toggle="modal" class="config">
 
-  <frame src="center/" name="mainFrame" id="mainFrame" />
+								</a>
+
+								<a href="javascript:;" class="reload">
+
+								</a>
+
+								<a href="javascript:;" class="remove">
+
+								</a>
+
+							</div>
+
+						</div>
+                                            <div class="portlet-body">
+
+							<ul class="list-group">
+                                                                 
+								<li class="list-group-item"><b>当前信息</b></li>
+								<li class="list-group-item">
+
+									当前登录IP:{$ip}<br />
+                                                                        操作系统：{$sys}<br />
+                                                                        浏览器版本：{$ex}<br />
+                                                                        web服务器版本：{$soft}<br />
+
+								</li>
+
+								<li class="list-group-item"><b>版权声明</b></li>
+								<li class="list-group-item">
+
+									 系统作者：杨超<br />
+                                                                         版本号:2.0 <br />
+                                                                         烟台爱尔眼科医院以及作者保留本系统的所有权利。
+
+								</li>
+
+								<li class="list-group-item"><b>技术支持</b></li>
+								<li class="list-group-item">
+
+                                         在使用本系统的过程中如有困难和疑惑，售后服务专员将为您热忱解决。如果您对本系统有任何建设性意见，欢迎联系本系统的作者反馈交流。 注：因用户自行对系统文件进行更改或二次开发，或错误地安装更新补丁而造成的系统错误，不属于免费售后维护范畴。如需解决此类问题，将视具体情况酌情收费处理。 
+
+								</li>
+
+								<li class="list-group-item"><b>技术服务</b></li>
+								<li class="list-group-item">
+
+								技术服务电话：13853509280<br />
+                                                                技术服务热线：0535-6696333转技术<br />
+                                                                技术服务QQ：295465800<br />
+                                                                技术服务Email：ychao0327@gmail.com
+
+                          					</li>
+                                                           <li class="list-group-item"><b>鸣谢</b></li>
+                                                           <li class="list-group-item">
+
+                                                                  本系统基于强大开源框架ThinkPHP开发,环境基于LINUX下的nginx,PHP-FPM
+
+                                                                </li>
 
 
 
-</frameset>
-
--->
-
-<frameset rows="48,*" cols="*" frameborder="yes" border="1" bordercolor="#000000" framespacing="0">
-
-  <frame src="top/" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+							</ul>
 
 
+                                                     
+                                                         </div><!--/portlet-body-->
+                                                      </div><!--/portlet box blue-->
+          
 
 
+ 
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
 
-
-
-  <frameset rows="*" cols="220,*" framespacing="0" frameborder="yes" border="1" bordercolor="#000000">
-
-  <frame src="left/" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
-
- <frame src="index/" name="mainFrame" id="mainFrame" title="mainFrame" /></td>
-
-
-
-  </frameset>
-
-</frameset>
-
-
-
-<noframes>
-
-<body>
-
-</body>
-
-</noframes></html>
-
-
-
+</block>

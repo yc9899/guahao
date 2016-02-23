@@ -1,73 +1,140 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<extend name="Main:base" />
+<block name="menu">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			报备列表 <small>List</small>
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">报备管理</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">报备列表</a>
+					</li>
+				</ul>
+                          </div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-edit"></i>报备管理
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+                                                            <div style="padding:10px"></div>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<title>管理面板</title>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="/Public/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body style="padding:30px">
-<table class="table table-bordered">
-<div class="alert alert-warning" role="alert">
-通知：如患者已经到院，点击 <b>已预约</b>可以确认到院！！！！查询系统，可以根据姓来查询，如不知道准确姓名，请根据患者姓来查询
-    	</div>
-<th>昨日预约情况：<marquee>预约{$yy}人，到院{$daoyuan}人</marquee></th>
-	</table>
-	<!--
-    <div class="btn-group">
-    <button class="btn">科室：</button>
-    <volist name="keshi" id="ks">
-    <button class="btn">{$ks.dname}</button>
-   </volist>
-    </div>-->
-<div style="padding:10px"></div>
+                                                            <div class="btn-group" role="group" aria-label="...">  
+                                                                 <button type="button" class="btn btn-default">到院：</button>
+                                                                 <a href="/Home/Yuyue/search/id/1" class="btn btn-default">今天</a>
+                                                                 <a href="/Home/Yuyue/search/id/2" class="btn btn-default">昨天</a>
+                                                                 <a href="/Home/Yuyue/search/id/3" class="btn btn-default">本周</a>
+                                                                 <a href="/Home/Yuyue/search/id/4" class="btn btn-default">本月</a>
+                                                            </div>
+                                                            <div style="padding:10px"></div>
 
-  <div class="btn-group" role="group" aria-label="...">  
-  <button type="button" class="btn btn-default">到院：</button>
-    <a href="/Home/Yuyue/search/id/1" class="btn btn-default">今天</a>
-   <a href="/Home/Yuyue/search/id/2" class="btn btn-default">昨天</a>
-    <a href="/Home/Yuyue/search/id/3" class="btn btn-default">本周</a>
-     <a href="/Home/Yuyue/search/id/4" class="btn btn-default">本月</a>
-    </div>
-   <div style="padding:10px"></div>
 
-   
-        <form class=".form-inline" action="/Home/Yuyue/xmsearch" method="post">
-<div class="row">
-<div class="col-lg-3">
-    <div class="input-group">
-      <input type="text" name="xm" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit">Go!</button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->   
 
-</div><!--/row-->
-</form>
-   <div style="padding:10px"></div>
- 
-<table class="table table-bordered table-hover">
-<tr>
-<td>ID</td>
-<td>部门：</td>
-<td>姓名:</td>
-<td>性别:</td>
-<td>科室:</td>
-<td>录入时间：</td>
-<td>预约时间：</td>
-<td>联系方式：</td>
-<td>是否到院:</td>
-<td>是否手术:</td>
-<td>操作:</td>
-</tr>
+								<div class="row">
+									<div class="col-md-1">
+										<div class="btn-group">
+											<button onclick="location='/Home/Yuyue/add/'" id="sample_editable_1_new" class="btn green">
+											新增 <i class="fa fa-plus"></i>
+											</button>
+										</div>
+                                                                </div>
+                                                                <form class=".form-inline" action="/Home/Yuyue/xmsearch" method="post">									
+                                                                     <div class="col-lg-3">
+                                                                         <div class="input-group">
+                                                                         <input type="text" name="xm" class="form-control" placeholder="Search for...">
+                                                                             <span class="input-group-btn">
+                                                                                 <button class="btn green" type="submit">Go!</button>
+                                                                             </span>
+                                                                          </div><!-- /input-group -->
+                                                                      </div><!-- /.col-lg-6 -->   
+                                                                 </form>
+
+						           </div>
+
+
+							</div>
+                                                <div class="table-responsive" style="text-align:center;">
+							<table class="table table-bordered">
+								<thead>
+								<tr>
+									<th>
+										 ID
+									</th>
+									<th>
+										 部门：
+									</th>
+									<th>
+										姓名：
+									</th>
+									<th>
+										 性别：
+									</th>
+									<th>
+										科室：
+									</th>
+                                                                            <th>录入时间：</th>
+                                                                          <th>预约时间：</th>
+                                                                          <td>联系方式：</th>
+                                                                          <th>是否到院:</th>
+                                                                          <th>是否手术:</th>
+									<th>
+										 操作
+									</th>
+								</tr>
+								</thead>
+								<tbody>
 <volist name="list" id="vo">
 <tr>
 <td>{$vo.id}</td>
@@ -97,11 +164,29 @@
 
 </tr>
 </volist>
-</table>
+							</tbody>
+							</table>
+                                                       </div>
+<div class="row">
+
+
+<div class="col-md-7 col-sm-7">
+<div class="dataTables_paginate paging_simple_numbers" id="sample_editable_1_paginate">
+
 {$page}
 
-
-
-
-</body>
-</html>
+   </div>
+       </div>
+            </div>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+</block>

@@ -1,34 +1,120 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/Public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-     <link href="/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<extend name="Main:base" />
+<block name="menu">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			用户列表 <small>List</small>
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">用户管理</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">用户列表</a>
+					</li>
+				</ul>
+                          </div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-edit"></i>用户管理
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+                                                            
+                                                <div class="table-responsive" style="text-align:center;">
+							<table class="table table-bordered">
+								<thead>
+								<tr>
+									<th>ID</th>
+									<th> 用户名：</th>
+									<th>权限：</th>
+									<th>操作：</th>
 
-<title>管理面板</title>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="/public/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body style="padding:30px">
-<table class="table table-bordered">
-<th>用户列表</th>	
-<tr>
-<td>用户名</td>
-<td>权限</td>
-<td>操作</td>
-
-</tr>
+								</tr>
+								</thead>
+								<tbody>
 <volist name="list" id="vo">
 <tr>
-
+<td>{$vo.id}</td>
 <td>{$vo.name}</td>
 <td>{$vo.title}</td>
+   
 <td><a href="/Home/User/del/id/{$vo.uid}">删除</a></td>
 
 </tr>
 </volist>
-    </table>
+							</tbody>
+							</table>
+                                                       </div>
+<div class="row">
 
-</body>
-</html>
+
+<div class="col-md-7 col-sm-7">
+<div class="dataTables_paginate paging_simple_numbers" id="sample_editable_1_paginate">
+
+{$page}
+
+   </div>
+       </div>
+            </div>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+</block>

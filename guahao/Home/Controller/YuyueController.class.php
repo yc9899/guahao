@@ -2,7 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 class YuyueController extends CommonController {
-	//显示添加表格
+	//添加数据
     public function add(){
            if(IS_POST){
 		    $data['name']=I('post.xingming');
@@ -12,6 +12,7 @@ class YuyueController extends CommonController {
 		    $data['yydate']=I('post.yysj');
 		    $data['department']=I('post.keshi');
 		    $data['data']=I('post.ziliao');
+                    $data['address'] = I('post.dz');
 		    $data['date']=date('Y-m-d H:i:s');
 		    $data['yuyue']='已预约';
                     $data['uid']=session('uid');
@@ -37,47 +38,9 @@ class YuyueController extends CommonController {
     $this->display(); 
       }  
     }
-    //添加客户
-    public function ad(){
-		    $data['name']=I('post.xingming');
-		    $data['gender']=I('post.xingbie');
-		    $data['age']=I('post.nianling');
-		    $data['telephone']= implode('-', sscanf(I('post.phone'), '%3s%4s%4s'));//格式化手机号
-		    $data['yydate']=I('post.yysj');
-		    $data['department']=I('post.keshi');
-		    $data['data']=I('post.ziliao');
-		    $data['date']=date('Y-m-d H:i:s');
-		    $data['yuyue']='已预约';
-                    $data['uid']=session('uid');
-                    $data['sid']=session('group');
-                    $data['uname'] = session('nick');
-                  //查询权限
-                   $g['id'] = session('group');
-                   $group = M('auth_group');
-                    $map= $group->where($g)->find(); 
-                    $data['source'] = $map['title'];
-		  //  $data['enddate']=date('Y-m-d',strtotime('+1 year'));
-		if(IS_POST){
-             $User = M("customer"); // 实例化User对象
-            $a = $user->data($data)->add();
-
-			if($a){
-				$this->success('添加成功！！！','/Home/Yuyue/lists');
-				
-				}
-			
-			
-			}else{
-				
-		$this->error('没有提交任何内容！！！！','/Home/Customer/add');		
-				
-				}
-		
-		}
-		//客户列表
+    		//客户列表
     public function lists(){
-    $User = M('customer'); // 实例化User对象
-    
+    $User = M('customer'); // 实例化User对象    
     $u['uid'] = session('uid');//获取登录ID
     $ment = session('m');//获取主管权限状态
     $acc = M('auth_group_access');
@@ -98,7 +61,7 @@ class YuyueController extends CommonController {
    $map['uid'] = session('uid');
     }
     $count = $User->where($map)->count();// 查询满足要求的总记录数
-    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(10)
     $Page->setConfig('prev', '上一页');
     $Page->setConfig('next', '下一页');
     $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
@@ -108,15 +71,6 @@ class YuyueController extends CommonController {
     $list = $User->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
     $this->assign('list',$list);// 赋值数据集
     $this->assign('page',$show);// 赋值分页输出
-    
-    //显示昨日预约情况
-    $us=M('customer');
-    $data['date']=date('Y-m-d',strtotime('-1 day'));
-   $yy=$us->where($data)->count();
-    $this->assign('yy',$yy);
-    $map['todate']=date('Y-m-d',strtotime('-1 day'));
-    $list=$us->where($map)->count();
-    $this->assign('daoyuan',$list);
     $this->display(); // 输出模板
     
     
@@ -133,7 +87,7 @@ class YuyueController extends CommonController {
 		
 		}
 	//客户更新信息
-      public function uplist(){
+/*      public function uplist(){
 		$data['id']=I('get.id');
 		$user=M('customer');
 		$list=$user->where($data)->find();
@@ -141,9 +95,9 @@ class YuyueController extends CommonController {
 		$this->display();
 		
 		
-		} 
+		} */
  //客户信息更新
- public function up(){
+ public function uplist(){
 	  $hidd=I('post.hidd');
 	 if(IS_POST){
 		    $data['id']=I('post.hidd');
@@ -153,7 +107,8 @@ class YuyueController extends CommonController {
 		    $data['telephone']=I('post.phone');
 		    $data['yydate']=I('post.yysj');
 		    $data['department']=I('post.keshi');
-		    $data['data']=I('post.ziliao');   
+		    $data['data']=I('post.ziliao'); 
+                    $data['address']=I('post.dz');  
 		 	$d=M('customer');
 			$a=$d->save($data);
 			
@@ -161,14 +116,22 @@ class YuyueController extends CommonController {
 				$this->success('修改成功！！！','/Home/Yuyue/lists');
 				
 				}else{ $this->error('没有修改任何内容！！！','/Home/Yuyue/lists');}
-		 }else{
 			 
-			$this->error('不存在要更新的内容！！！','/Home/Yuyue/lists');
-			 
-			 
-			 }
  
-	 
+	 }else{
+    //显示更新的内容
+           $data['id']=I('get.id');
+                $user=M('customer');
+                $list=$user->where($data)->find();
+                $this->assign('list',$list);
+        
+                //获取科室
+                $map = M('department');
+                $dep = $map->select();
+                $this->assign('dep',$dep);
+                $this->display();
+                 
+               }
 	 
 	 }
 	 //删除客户资料
@@ -283,28 +246,22 @@ elseif($status==已预约){
 	
 	}
 	  
-
-	$User = M('customer'); // 实例化User对象
+    $User = M('customer'); // 实例化User对象
     $count = $User->where($map)->count();// 查询满足要求的总记录数
     $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
-
     $Page->setConfig('prev', '上一页');
     $Page->setConfig('next', '下一页');
     $Page->setConfig('theme', '%HEADER% %FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
-       //分页跳转的时候保证查询条件
-foreach($map as $key=>$val) {
-$Page->parameter[$key] = urlencode($val);
-}
+    //分页跳转的时候保证查询条件
+    foreach($map as $key=>$val) {
+     $Page->parameter[$key] = urlencode($val);
+    }
     $show = $Page->show();// 分页显示输出
     // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
     $list = $User->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
     $this->assign('list',$list);// 赋值数据集
     $this->assign('page',$show);// 赋值分页输出
-		 
-	$this->display();
-
-	
-	
+    $this->display();
 	}
    
 

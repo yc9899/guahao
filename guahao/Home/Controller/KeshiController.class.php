@@ -7,11 +7,7 @@ class KeshiController extends CommonController {
     }
     //显示增加页面
     public function add(){
-   $this->display();
-
-		}
-		
-   public function ad(){
+        if(IS_POST){
 	   		//管理权限判断
 		if($_SESSION['var']){
 	   	$user=M('department');
@@ -27,9 +23,12 @@ class KeshiController extends CommonController {
 			
 			
 			}
-	   
-	   
-	   }		
+
+        }else{
+            $this->display();
+        }
+    }
+			
 
     public function lists(){
 		$user=M('department');
@@ -37,14 +36,33 @@ class KeshiController extends CommonController {
 		$this->assign('list',$list);
 		$this->display();
 		}
+
 	public function uplist(){
+            if(IS_POST){
+                $data['id']=I('post.id');
+		$data['dname']=I('post.mingcheng');
+		$data['ddate']=date('Y-m-d');
+		$user=M('department');
+		$sa=$user->save($data);
+		if($sa){
+		    $this->success('修改成功！！！','/Home/Keshi/lists');
+		}else{
+	             $this->error('修改失败');
+				
+	        }
+
+	    }else{
+
 		$data['id']=I('get.id');
 		$user=M('department');
 		$list=$user->where($data)->find	();
 		$this->assign('list',$list);
-		$this->display();
-		
-		}
+      		$this->display();
+
+
+
+            }	
+        }
 	public function up(){
 		$data['id']=I('post.id');
 		$data['dname']=I('post.mingcheng');
