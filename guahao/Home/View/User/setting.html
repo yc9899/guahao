@@ -1,0 +1,87 @@
+<extend name="Main:base" />
+<block name="menu">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title">
+			系统设置
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">系统设置</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">系统基本参数设置</a>
+					</li>
+				</ul>
+				
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN VALIDATION STATES-->
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i>系统及本参数设置
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form  method="post" class="form-horizontal">
+                                            
+								<div class="form-body">
+	      								<div class="form-group has-warning">
+										<label class="control-label col-md-3" for="inputWarning">网站名称</label>
+										<div class="col-md-4">
+                                                                                     <input type="text" name="sitename" value="{$list.site}" class="form-control" id="inputError">
+
+										</div>
+									</div>
+									
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button type="submit" class="btn green">保存</button>
+										
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+					<!-- END VALIDATION STATES-->
+				</div>
+			</div>
+			
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+	
+</div>
+<!-- END CONTAINER -->
+</block>
